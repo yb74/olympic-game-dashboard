@@ -1,0 +1,60 @@
+.continent-container {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-gap: 10px;
+    /* justify-content: center; */
+    align-items: center;
+}
+
+/* .continent-container {
+    display: flex;
+    justify-content: space-evenly;
+} */
+
+/* continent cards */
+.continent-card {
+    grid-column: span 2;
+    /* position: relative; */
+    /* anchor-name: --positionRing; */
+}
+
+.continent-card-1 {
+    grid-column: 2 / 4;
+    grid-row: 2 / 2;
+}
+
+.continent-card-4 {
+    grid-column: 4 / 6;
+    grid-row: 2 / 2;
+}
+
+/* Rings */
+.ring {
+    /* position: fixed; */
+}
+
+.ring-0 {
+    /* position-anchor: --positionRing;
+    top: anchor(50%);
+    left: anchor(50%); */
+}
+
+/* Medals */
+.medals-container {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.gold-medals, .silver-medals, .bronze-medals {
+    /* display: flex; */
+}
+
+/* Logo */
+.ring {
+    border-style: solid;
+    border-radius: 100%;
+    width: 150px;
+    height: 150px;
+    /* aspect-ratio: 1; */
+    /* position: absolute; */
+}

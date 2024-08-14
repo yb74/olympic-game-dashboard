@@ -1,0 +1,33 @@
+<div class="continent-container">
+    <article class="continent-card" *ngFor="let continent of configuredContinents; let i = index" [ngClass]="'continent-card-' + i">
+        <div *ngIf="i === 1 || i === 4" class="ring" 
+            [ngClass]="'ring-' + i" 
+            [ngStyle]="{
+                'border-color': continent.color,
+                'border-width': continent.ringBorderSize + 'px'
+            }">
+        </div>
+        <header class="continent-stats">
+            <h2 [ngStyle]="{'color': continent.color}">{{continent.name}} : <strong>{{continent.medal.totalMedals}}</strong></h2>
+           
+            <ul class="medals-container">
+                <li class="medals-item-list gold-medals" [ngStyle]="{'color': continent.medal.gold.medalColor}">
+                    {{continent.medal.gold.medalNumberPerGrade}}
+                </li>
+                <li class="medals-item-list silver-medals" [ngStyle]="{'color': continent.medal.silver.medalColor}">
+                    {{continent.medal.silver.medalNumberPerGrade}}
+                </li>
+                <li class="medals-item-list bronze-medals" [ngStyle]="{'color': continent.medal.bronze.medalColor}">
+                    {{continent.medal.bronze.medalNumberPerGrade}}
+                </li>
+            </ul>
+        </header>
+        <div  *ngIf="i !== 1 && i !== 4" class="ring" 
+            [ngClass]="'ring-' + i" 
+            [ngStyle]="{
+                'border-color': continent.color, 
+                'border-width': continent.ringBorderSize + 'px'
+            }">
+        </div>
+    </article>
+</div>

@@ -1,0 +1,9 @@
+.main-container {
+    margin: 1em;
+    padding: 2em;
+    background-color: rgb(255, 255, 255);
+    /* background: url('../assets/images//card-background.jpeg'), no-repeat cover; */
+    /* background: center / cover no-repeat url("../assets/images//card-background.jpeg"),
+            #eee; */
+    /* background: linear-gradient(#000000a6,#000000a6),url(./assets/images/card-background.jpeg) center center / cover no-repeat,linear-gradient(135deg,#9bc8c5,#f6ead2,#a2deaa); */
+}
