@@ -1,0 +1,12 @@
+.ring {
+    border-style: solid;
+    border-radius: 100%;
+    width: 200px;
+    height: 200px;
+}
+
+.gold-badge, .silver-badge, .bronze-badge {
+    border-radius: 100%;
+    width: 10px;
+    height: 10px;
+}
