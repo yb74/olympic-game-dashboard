@@ -10,9 +10,10 @@ import { ContinentObj } from '../models/continentObj';
 })
 export class RingComponent implements OnInit {
 
-  public continents: ContinentApiData[] = [];
-  public configuredContinents: ContinentObj[] = [];
-  public ringBorderWidth: number = 0;
+  continents: ContinentApiData[] = [];
+  configuredContinents: ContinentObj[] = [];
+  ringBorderWidth: number = 0;
+  highestTotalMedals: number = 0;
 
   constructor(private retrieveDataService: RetrieveDataService) {}
 
@@ -27,6 +28,11 @@ export class RingComponent implements OnInit {
   configureContinentSettings = (continents: ContinentApiData[]) => {
     // colors are defined within an array and ordered as in the olympic game logo
     const colors = ["blue", "yellow", "black", "green", "red"];
+
+    /*
+    stocking highest total medals among all continents in this.highestTotalMedals variable
+    */
+    this.setHighestTotalMedals(continents);
 
     for (let i = 0; i < continents.length; i++) {
       // setting rings border size
@@ -62,18 +68,31 @@ export class RingComponent implements OnInit {
     return this.configuredContinents;
   }
 
+  sortFromMinToMax = (numbersToSort: number[]) => {
+    numbersToSort.sort((a, b) => a-b);
+  }
+
+  /**
+   * function to determine ring border size
+   * to do so, the total number of medals is divided by the highest one and multiply by the max pixel size we want
+   * @param continent 
+   */
   setRingBorderSize = (continent: ContinentApiData) => {
-    continent.total === 0 ? 0 :
-    continent.total >= 0 && continent.total < 20 ? this.ringBorderWidth = 1 :
-    continent.total >= 20 && continent.total < 50 ? this.ringBorderWidth = 2 :
-    continent.total >= 50 && continent.total < 100 ? this.ringBorderWidth = 4 :
-    continent.total >= 100 && continent.total < 150 ? this.ringBorderWidth = 6 :
-    continent.total >= 150 && continent.total < 200 ? this.ringBorderWidth = 8 :
-    continent.total >= 200 && continent.total < 250 ? this.ringBorderWidth = 10 :
-    continent.total >= 250 && continent.total < 300 ? this.ringBorderWidth = 12 :
-    continent.total >= 300 && continent.total < 350 ? this.ringBorderWidth = 14 :
-    continent.total >= 350 && continent.total < 400 ? this.ringBorderWidth = 16 :
-    continent.total >= 400 && continent.total < 450 ? this.ringBorderWidth = 18 :
-    continent.total >= 450 && continent.total < 500 ? this.ringBorderWidth = 20 : this.ringBorderWidth = 0;
+    this.ringBorderWidth = Math.ceil(continent.total / this.highestTotalMedals * 30);
+  }
+
+  /**
+   * this function store highest total medals in highestTotalMedals variable
+   * the array of continents is cloned before sorting its values to avoid affecting the original array
+   * 
+   * @param continents
+   */
+  private setHighestTotalMedals(continents: ContinentApiData[]) {
+    const totalMedalsOfContinents = continents.map(continent => continent.total);
+    const totalMedalsGapClone = [...totalMedalsOfContinents];
+
+    this.sortFromMinToMax(totalMedalsGapClone);
+
+    this.highestTotalMedals = totalMedalsGapClone[totalMedalsGapClone.length - 1];
   }
 }
