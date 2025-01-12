@@ -1,60 +1,27 @@
+/* Main container */
 .continent-container {
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    grid-gap: 10px;
-    /* justify-content: center; */
-    align-items: center;
-}
-
-/* .continent-container {
-    display: flex;
-    justify-content: space-evenly;
-} */
-
-/* continent cards */
-.continent-card {
-    grid-column: span 2;
-    /* position: relative; */
-    /* anchor-name: --positionRing; */
-}
-
-.continent-card-1 {
-    grid-column: 2 / 4;
-    grid-row: 2 / 2;
-}
-
-.continent-card-4 {
-    grid-column: 4 / 6;
-    grid-row: 2 / 2;
+    position: relative;
+    width: 600px;
+    height: 300px;
+    margin: 0 auto;
 }
 
 /* Rings */
 .ring {
-    /* position: fixed; */
-}
-
-.ring-0 {
-    /* position-anchor: --positionRing;
-    top: anchor(50%);
-    left: anchor(50%); */
-}
-
-/* Medals */
-.medals-container {
-    display: flex;
-    justify-content: space-evenly;
-}
-
-.gold-medals, .silver-medals, .bronze-medals {
-    /* display: flex; */
-}
-
-/* Logo */
-.ring {
+    position: absolute;
     border-style: solid;
-    border-radius: 100%;
-    width: 150px;
-    height: 150px;
-    /* aspect-ratio: 1; */
-    /* position: absolute; */
+    border-radius: 50%;
+    width: 220px;
+    height: 220px;
+}
+
+/* Continents cards */
+.continent-card {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }

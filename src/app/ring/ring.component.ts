@@ -26,47 +26,51 @@ export class RingComponent implements OnInit {
   }
 
   configureContinentSettings = (continents: ContinentApiData[]) => {
-    // colors are defined within an array and ordered as in the olympic game logo
     const colors = ["blue", "yellow", "black", "green", "red"];
-
-    /*
-    stocking highest total medals among all continents in this.highestTotalMedals variable
-    */
-    this.setHighestTotalMedals(continents);
-
-    for (let i = 0; i < continents.length; i++) {
-      // setting rings border size
-      this.setRingBorderSize(continents[i]);
-
-      // setting rings position
-
+    const positions = [
+      { x: 50, y: 50 },  // 1st ring
+      { x: 125, y: 150 }, // 2nd ring
+      { x: 200, y: 50 },  // 3rd ring
+      { x: 275, y: 150 }, // 4th ring
+      { x: 350, y: 50 }   // 5th ring
+    ];
+  
+    // Order continents by descendant order of number of medals
+    const sortedContinents = continents.sort((a, b) => b.total - a.total);
+  
+    this.setHighestTotalMedals(sortedContinents);
+  
+    for (let i = 0; i < sortedContinents.length; i++) {
+      this.setRingBorderSize(sortedContinents[i]);
+  
       const continent: ContinentObj = {
-        name: continents[i].name,
+        name: sortedContinents[i].name,
         medal: {
           gold: {
-            medalNumberPerGrade: continents[i].gold,
+            medalNumberPerGrade: sortedContinents[i].gold,
             medalColor: "gold"
           },
           silver: {
-            medalNumberPerGrade: continents[i].silver,
+            medalNumberPerGrade: sortedContinents[i].silver,
             medalColor: "silver"
           },
           bronze: {
-            medalNumberPerGrade: continents[i].bronze,
+            medalNumberPerGrade: sortedContinents[i].bronze,
             medalColor: "brown"
           },
-          totalMedals: continents[i].total
+          totalMedals: sortedContinents[i].total
         },
         color: colors[i],
         ringBorderSize: this.ringBorderWidth,
-        positionX: 20,
-        positionY: 50
-    };
+        positionX: positions[i].x,
+        positionY: positions[i].y
+      };
   
       this.configuredContinents.push(continent);
     }
-    return this.configuredContinents;
-  }
+  };
+  
+  
 
   sortFromMinToMax = (numbersToSort: number[]) => {
     numbersToSort.sort((a, b) => a-b);

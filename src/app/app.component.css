@@ -1,9 +1,11 @@
 .main-container {
-    margin: 1em;
+    width: 80vw;
+    height: 85vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     padding: 2em;
-    background-color: rgb(255, 255, 255);
-    /* background: url('../assets/images//card-background.jpeg'), no-repeat cover; */
-    /* background: center / cover no-repeat url("../assets/images//card-background.jpeg"),
-            #eee; */
-    /* background: linear-gradient(#000000a6,#000000a6),url(./assets/images/card-background.jpeg) center center / cover no-repeat,linear-gradient(135deg,#9bc8c5,#f6ead2,#a2deaa); */
 }

@@ -1,8 +1,11 @@
-body {
-    /* overflow: hidden; */
-    background: linear-gradient(#000000a6,#000000a6),url(./assets/images/background.png) center center / cover no-repeat,linear-gradient(135deg,#9bc8c5,#f6ead2,#a2deaa);
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
     display: flex;
     align-items: center;
     justify-content: center;
-    text-align: center;
+    background: linear-gradient(#000000a6, #000000a6),
+                url(./assets/images/background.png) center center / cover no-repeat,
+                linear-gradient(135deg, #9bc8c5, #f6ead2, #a2deaa);
 }
